@@ -117,7 +117,7 @@ jobs:
           to: ${{ secrets.MAIL_TO }}
           #cc: ${{ secrets.MAIL_CC }}
           from: Github Action Workflow <ycchen005@gmail.com>
-          attachments: ${{ steps.prepare_logs.outputs.logs }}
+          #attachments: ${{ steps.prepare_logs.outputs.logs }}
           body: |
             Hello,
 

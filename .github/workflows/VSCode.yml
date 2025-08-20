@@ -109,17 +109,22 @@ jobs:
           fi
 
       - name: Send mail
+        if: failure()
         uses: dawidd6/action-send-mail@v5
         with:
           connection_url: ${{ secrets.MAIL_CONNECTION }}
-          subject: test
+          subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
           to: ${{ secrets.MAIL_TO }}
           #cc: ${{ secrets.MAIL_CC }}
-          from: Github Action Workflow
+          from: Github Action Workflow <ycchen005@gmail.com>
+          attachments: ${{ steps.prepare_logs.outputs.logs }}
           body: |
             Hello,
 
-            Gerrit_NuMicro test.
+            The build has completed. Please find the attached log file for details.
+
+            Failure:
+            ${{ steps.prepare_logs.outputs.msglogs }}
 
             Best regards,
             NuMicro Actions

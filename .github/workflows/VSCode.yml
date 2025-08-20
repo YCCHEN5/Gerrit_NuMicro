@@ -116,7 +116,7 @@ jobs:
           subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
           to: ${{ secrets.MAIL_TO }}
           #cc: ${{ secrets.MAIL_CC }}
-          from: Github Action Workflow <ycchen005@gmail.com>
+          from: Github Action Workflow
           attachments: ${{ steps.prepare_logs.outputs.logs }}
           body: |
             Hello,
